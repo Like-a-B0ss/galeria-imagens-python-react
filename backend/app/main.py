@@ -4,8 +4,6 @@ from typing import Annotated
 from fastapi import FastAPI, File, HTTPException, UploadFile, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
-from fastapi.staticfiles import StaticFiles
-from pathlib import Path
 
 from .database import get_connection, initialize_database
 
@@ -120,10 +118,4 @@ def delete_image(image_id: int) -> Response:
     if cursor.rowcount == 0:
         raise HTTPException(status_code=404, detail="Imagem não encontrada.")
     return Response(status_code=status.HTTP_204_NO_CONTENT)
-
-
-# No deploy, o build do React é servido pelo mesmo processo da API.
-frontend_dist = Path(__file__).resolve().parents[2] / "frontend" / "dist"
-if frontend_dist.is_dir():
-    app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")
 
