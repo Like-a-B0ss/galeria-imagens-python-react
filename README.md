@@ -71,3 +71,6 @@ npm run build
 
 O banco é criado automaticamente em `backend/data/images.db` na primeira execução e não é versionado.
 
+## Deploy
+
+O `Dockerfile` na raiz gera o build do React e o serve pelo próprio FastAPI. Em produção, defina `IMAGE_DATABASE_PATH` para um caminho em volume persistente (por padrão, `/data/images.db`). A configuração `railway.json` inclui o health check da aplicação.
