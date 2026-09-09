@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Runtime data
+backend/data/*.db
+backend/data/*.db-*
+!backend/data/.gitkeep
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
